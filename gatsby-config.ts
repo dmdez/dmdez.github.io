@@ -12,7 +12,16 @@ const config: GatsbyConfig = {
     {
       // https://chakra-ui.com/getting-started/gatsby-guide
       resolve: "@chakra-ui/gatsby-plugin",
-      options: {},
+      options: {
+        resetCSS: true,
+      },
+    },
+    `gatsby-transformer-yaml`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./src/data/`,
+      },
     },
   ],
 };

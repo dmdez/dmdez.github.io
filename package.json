@@ -15,21 +15,28 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
-    "theme": "chakra-cli tokens path/to/theme.ts",
-    "theme:watch": "chakra-cli tokens path/to/theme.ts --watch"
+    "theme": "chakra-cli tokens src/@chakra-ui/gatsby-plugin/theme.ts",
+    "theme:watch": "chakra-cli tokens src/@chakra-ui/gatsby-plugin/theme.ts --watch"
   },
   "dependencies": {
     "@chakra-ui/gatsby-plugin": "^3.1.1",
+    "@chakra-ui/icons": "^2.1.0",
     "@chakra-ui/react": "^2.5.5",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "d3": "^7.8.5",
     "framer-motion": "^10.10.0",
     "gatsby": "^5.11.0",
+    "gatsby-source-filesystem": "^5.11.0",
+    "gatsby-transformer-yaml": "^5.11.0",
+    "lodash": "^4.17.21",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.10.1"
   },
   "devDependencies": {
     "@chakra-ui/cli": "^2.3.0",
+    "@types/d3": "^7.4.0",
     "@types/node": "^18.15.8",
     "@types/react": "^18.0.29",
     "@types/react-dom": "^18.0.11",

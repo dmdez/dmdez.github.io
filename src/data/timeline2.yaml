@@ -1,0 +1,102 @@
+- name: KCKCC Internship
+  date: 2001-01-01
+  skills:
+  - name: HTML
+    startDate: 2001-01-01
+    endDate: 2002-01-01
+    description: Learned to write semantic HTML in order to provide school's pages with searchable content.
+  - name: CSS
+    startDate: 2001-01-01
+    endDate: 2002-01-01
+    description: Start learning CSS in school work and applying minor css styling to school content pages
+  - name: Macromedia Flash
+    startDate: 2001-01-01
+    endDate: 2002-01-01  
+    description: Used flash to build out animations and tweens for custom website ad banners
+  - name: Photoshop
+    startDate: 2001-01-01
+    endDate: 2002-01-01  
+  - name: Perl
+    startDate: 2001-06-01
+    endDate: 2002-01-03
+    description: Learned to work with Perl for content updates and form submissions
+
+- name: Virtumundo
+  date: 2002-01-01
+  skills:
+  - name: CSS
+    startDate: 2002-01-01
+    endDate: 2003-01-01
+    description: Start using CSS to decorate landing pages and TreeLoot website.
+  - name: HTML
+    startDate: 2002-01-01
+    endDate: 2003-01-01
+    description: Not only used HTML for general content updates, but started to learn to use HTML for building targeted advertising emails.
+  - name: Macromedia Flash
+    startDate: 2002-01-01
+    endDate: 2003-01-01
+    description: Continued with animation and tweens then learned to apply ActionScripting to automate animations and add in logic for more interactive banners and games
+
+
+- name: MultiService
+  date: 2004-01-01
+  skills:
+  - name: Macromedia Flash
+    startDate: 2004-01-01
+    endDate: 2008-01-01
+    description: Built out animated banners and theme'd games to use for website promotions
+  - name: JavaScript
+    startDate: 2005-01-01
+    endDate: 2008-08-01
+  - name: CSS
+    startDate: 2004-01-01
+    endDate: 2008-08-01
+    description: ========
+  - name: Perl
+    startDate: 2006-01-01
+    endDate: 2008-05-01
+    description: Spent time learning how to interface with MySQL and building out a custom CMS.  Also worked with Interchange ecommerce platform to help build out an electronics and stereo equipment store.
+  - name: MySQL
+    startDate: 2005-01-01
+    endDate: 2008-04-01
+    description: Learned advanced indexing and querying capabilities to get related products on ecommerece stores.
+
+- name: DEG
+  date: 2008-08-01
+  skills:
+  - name: CSS
+    startDate: 2008-08-01
+    endDate: 2014-08-09
+    description: ====
+  - name: jQuery
+    startDate: 2010-08-01
+    endDate: 2013-08-09
+    description: Used jQuery and wrote custom plugins to help build out splash page and content page interactions.
+  - name: Macromedia Flash
+    startDate: 2008-08-01
+    endDate: 2010-08-09
+    description: 
+  - name: .NET
+    startDate: 2008-08-01
+    endDate: 2014-08-09
+    description: About 70% of projects with DEG were .NET related. I was hired initially to build out UI's for all of our custom .NET projects. 
+
+- name: Crema
+  date: 2014-09-01
+  skills:
+  - name: Wordpress
+    startDate: 2016-01-01
+    endDate: 2018-01-01
+    description: Majority of clients' products needed support for marketing/CMS which I was able to take on building out custom themes and plugins.
+  - name: Angular
+    startDate: 2017-01-01
+    endDate: 2018-01-01
+    description: Prior to adopting React, we were using Angular to build out SPA's.
+  - name: React
+    startDate: 2018-01-01
+    endDate: 2023-09-01
+    description: ====
+  - name: Typescript
+    startDate: 2019-01-01
+    endDate: 2023-09-01
+    description: ====
