@@ -1,12 +1,8 @@
 import * as React from "react";
-import { Box, Text, Tooltip } from "@chakra-ui/react";
-import { max, min, orderBy } from "lodash";
-import { scaleTime, timeDay, timeMonth, timeYear } from "d3";
-import { InfoOutlineIcon } from "@chakra-ui/icons";
 import { BezierConnector, BrowserJsPlumbInstance, newInstance } from "@jsplumb/browser-ui";
 
 type Props = {
-  skills: Queries.Timeline2YamlSkills[];
+  skills: Queries.TimelineYamlSkills[];
 };
 
 export function useTimelineConnectors({ skills }: Props) {
@@ -20,11 +16,12 @@ export function useTimelineConnectors({ skills }: Props) {
       const source = cardRefs.current[i];
       const target = dotRefs.current[i];
       if (source && target && jsPlumbInstance.current) {
-      jsPlumbInstance.current.connect({
+        const connection = jsPlumbInstance.current.connect({
           source,
           target,
           anchors: ["Left", "Right"],
           endpoint: "Blank",
+          cssClass: `connect connect-${i}`,
           paintStyle: {
               strokeWidth: 1,
               stroke: 'currentColor',
@@ -33,17 +30,20 @@ export function useTimelineConnectors({ skills }: Props) {
           connector: {
             type: BezierConnector.type,
             options: {
-              curviness: 40,
+              curviness: 30,
             },
           },
         });
+        connection.bind("mouseover", (d) => {
+          console.log("hover?")
+        })
       }
     });
   }, [skills]);
 
   React.useEffect(() => {
     if (rootRef.current) {
-        jsPlumbInstance.current = newInstance({
+      jsPlumbInstance.current = newInstance({
         container: rootRef.current,
       });
       drawConnections();

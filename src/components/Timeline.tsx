@@ -1,22 +1,14 @@
 import * as React from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import {
-  Box,
-  Container,
-  Divider,
-  HStack,
-  Heading,
-  Text,
-} from "@chakra-ui/react";
+import { Box, HStack, Heading, Text } from "@chakra-ui/react";
 import { orderBy } from "lodash";
 import { Marker } from "./Marker";
 import { SkillTimeline } from "./SkillTimeline";
-import { MarkerYear } from "./MarkerYear";
 
 export function Timeline() {
-  const timeline = useStaticQuery<Queries.Timeline2Query>(graphql`
-    query Timeline2 {
-      allTimeline2Yaml {
+  const timeline = useStaticQuery<Queries.TimelineQuery>(graphql`
+    query Timeline {
+      allTimelineYaml {
         nodes {
           id
           name
@@ -31,14 +23,14 @@ export function Timeline() {
       }
     }
   `);
-  const data = timeline.allTimeline2Yaml.nodes;
+  const data = timeline.allTimelineYaml.nodes;
 
   return (
     <Box
       position="relative"
       pt={20}
       sx={{
-        "& section:nth-child(even)": {
+        "& section:nth-of-type(even)": {
           transform: [null, "rotateY(180deg)"],
           "& .skills,.jobDescription,.marker": {
             transform: [null, "rotateY(180deg)"],
@@ -48,7 +40,7 @@ export function Timeline() {
     >
       {orderBy(data, "date", "desc").map(({ name, date, skills }, i) => {
         return (
-          <Box as="section" maxW="container.lg" pt="5" margin="0 auto">
+          <Box key={i} as="section" maxW="container.lg" pt="5" margin="0 auto">
             <HStack
               flexDir={["column", "row-reverse"]}
               spacing="0"

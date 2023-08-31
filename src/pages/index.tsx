@@ -2,10 +2,8 @@ import * as React from "react";
 import type { HeadFC } from "gatsby";
 import {
   Box,
-  useColorMode,
   Container,
   Heading,
-  Divider,
   Text,
   Tabs,
   TabList,
@@ -18,33 +16,40 @@ import { ToggleColor } from "../components/ToggleColor";
 import { MarkerYear } from "../components/MarkerYear";
 
 const IndexPage: React.FC = () => {
-  const { toggleColorMode } = useColorMode();
-
   return (
     <Box as="main">
-      <Container maxW="container.lg" position="relative">
-        <Box
-          py={[10, 20]}
-          bgGradient="radial(#ffffff11 0%, #ffffff00 60%)"
-          textAlign="center"
-        >
-          <Text fontSize="x-large" fontWeight="thin" mb="2">
-            👋 hello, my name is
-          </Text>
-          <Heading
-            size={["3xl", "4xl"]}
-            sx={{
-              textShadow: "10px 10px 4px rgba(0,0,0,.25)",
-              _dark: { textShadow: "10px 10px 4px black" },
-            }}
+      <Box
+        sx={{
+          bgGradient: "linear(gray.200, transparent)",
+          _dark: {
+            bgGradient: "linear(gray.900, transparent)",
+          },
+        }}
+      >
+        <Container maxW="container.lg" position="relative">
+          <Box
+            py={[10, 20]}
+            bgGradient="radial(#ffffff11 0%, #ffffff00 60%)"
+            textAlign="center"
           >
-            deric mendez
-          </Heading>
-        </Box>
-        <ToggleColor />
-      </Container>
-      <Tabs variant="enclosed" align="center">
-        <TabList mb="6">
+            <Text fontSize="x-large" fontWeight="thin" mb="2">
+              👋 hello, my name is
+            </Text>
+            <Heading
+              size={["3xl", "4xl"]}
+              sx={{
+                textShadow: "10px 10px 4px rgba(0,0,0,.25)",
+                _dark: { textShadow: "10px 10px 4px black" },
+              }}
+            >
+              deric mendez
+            </Heading>
+          </Box>
+          <ToggleColor />
+        </Container>
+      </Box>
+      <Tabs align="center">
+        <TabList>
           <Tab>Career</Tab>
           <Tab>Hobbies</Tab>
         </TabList>
@@ -55,7 +60,7 @@ const IndexPage: React.FC = () => {
               sx={{
                 display: ["flex", "block"],
                 flexDir: "row-reverse",
-                ml: [8, 0],
+                ml: [4, 0],
               }}
             >
               <Timeline />
@@ -89,4 +94,4 @@ const IndexPage: React.FC = () => {
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>Home Page</title>;
+export const Head: HeadFC = () => <title>DM - deric mendez</title>;

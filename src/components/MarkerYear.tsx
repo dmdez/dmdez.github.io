@@ -32,7 +32,7 @@ export function MarkerYear() {
           position: "sticky",
           top: "1em",
           zIndex: 10,
-          backgroundColor: "secondary.800",
+          backgroundColor: "secondary.500",
           height: "2.4em",
           width: "2.4em",
           textAlign: "center",

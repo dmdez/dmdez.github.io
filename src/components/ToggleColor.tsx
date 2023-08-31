@@ -25,8 +25,6 @@ export function ToggleColor() {
       <Box
         as="button"
         onClick={toggleColorMode}
-        // bgGradient="radial(#ffffff33 0%, #ffffff00 80%)"
-        // p={1}
         sx={{
           fontSize: ["2em", "3em"],
           transform: "rotate(180deg)",
