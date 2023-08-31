@@ -6,10 +6,16 @@ import {
   Container,
   Heading,
   Divider,
+  Text,
+  Tabs,
+  TabList,
+  Tab,
+  TabPanels,
+  TabPanel,
 } from "@chakra-ui/react";
 import { Timeline } from "../components/Timeline";
-import { Timeline2 } from "../components/Timeline2";
 import { ToggleColor } from "../components/ToggleColor";
+import { MarkerYear } from "../components/MarkerYear";
 
 const IndexPage: React.FC = () => {
   const { toggleColorMode } = useColorMode();
@@ -19,11 +25,14 @@ const IndexPage: React.FC = () => {
       <Container maxW="container.lg" position="relative">
         <Box
           py={[10, 20]}
-          textAlign="center"
           bgGradient="radial(#ffffff11 0%, #ffffff00 60%)"
+          textAlign="center"
         >
+          <Text fontSize="x-large" fontWeight="thin" mb="2">
+            👋 hello, my name is
+          </Text>
           <Heading
-            size={["2xl", "4xl"]}
+            size={["3xl", "4xl"]}
             sx={{
               textShadow: "10px 10px 4px rgba(0,0,0,.25)",
               _dark: { textShadow: "10px 10px 4px black" },
@@ -34,30 +43,46 @@ const IndexPage: React.FC = () => {
         </Box>
         <ToggleColor />
       </Container>
-      <Divider />
-      <Timeline2 />
-      {/* 
-      <Box
-        sx={{
-          position: "relative",
-          overflow: "auto",
-          height: "50vh",
-          width: "100%",
-        }}
-      >
-        <Box
-          sx={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            bottom: 0,
-            width: ["400%", "200%", "100%"],
-          }}
-          mb={4}
-        >
-          <Timeline />
-        </Box>
-      </Box> */}
+      <Tabs variant="enclosed" align="center">
+        <TabList mb="6">
+          <Tab>Career</Tab>
+          <Tab>Hobbies</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>
+            <Box
+              position={"relative"}
+              sx={{
+                display: ["flex", "block"],
+                flexDir: "row-reverse",
+                ml: [8, 0],
+              }}
+            >
+              <Timeline />
+              <Box
+                sx={{
+                  position: ["relative", "static"],
+                }}
+              >
+                <MarkerYear />
+                <Box
+                  sx={{
+                    borderLeft: "1px dashed",
+                    height: "calc(100% - 4em)",
+                    position: "absolute",
+                    left: "50%",
+                    opacity: 0.5,
+                    bottom: 0,
+                  }}
+                />
+              </Box>
+            </Box>
+          </TabPanel>
+          <TabPanel>
+            <p>two!</p>
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
     </Box>
   );
 };

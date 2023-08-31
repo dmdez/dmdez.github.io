@@ -1,119 +1,99 @@
 import * as React from "react";
-import { Box, Button, Tooltip } from "@chakra-ui/react";
-import { max, min } from "d3-array";
-import { scaleTime } from "d3-scale";
-import { groupBy, orderBy, sortBy } from "lodash";
-import { TimelineGrid } from "./TimelineGrid";
-import { useTimelineData } from "../hooks/useTimelineData";
-
-function getMinMaxFromData(
-  d: Queries.TimelineQuery["allTimelineYaml"]["nodes"]
-) {
-  const startDates = d.map(({ startDate }) =>
-    startDate ? new Date(startDate).valueOf() : 0
-  );
-  const endDates = d.map(({ endDate }) =>
-    endDate ? new Date(endDate).valueOf() : Date.now().valueOf()
-  );
-  const minDate = min(startDates) || 0;
-  const maxDate = max(endDates) || 0;
-  return { minDate, maxDate };
-}
+import { graphql, useStaticQuery } from "gatsby";
+import {
+  Box,
+  Container,
+  Divider,
+  HStack,
+  Heading,
+  Text,
+} from "@chakra-ui/react";
+import { orderBy } from "lodash";
+import { Marker } from "./Marker";
+import { SkillTimeline } from "./SkillTimeline";
+import { MarkerYear } from "./MarkerYear";
 
 export function Timeline() {
-  const {
-    setFilterWorkplace,
-    groupedByWorkplace,
-    getSize,
-    ticks,
-    groupedTimeline,
-    filterWorkplace,
-  } = useTimelineData();
+  const timeline = useStaticQuery<Queries.Timeline2Query>(graphql`
+    query Timeline2 {
+      allTimeline2Yaml {
+        nodes {
+          id
+          name
+          date
+          skills {
+            name
+            startDate
+            endDate
+            description
+          }
+        }
+      }
+    }
+  `);
+  const data = timeline.allTimeline2Yaml.nodes;
 
   return (
-    <Box display="flex" flexDir="column" height="100%">
-      {filterWorkplace && (
-        <Box sx={{ zIndex: 10 }}>
-          <Button onClick={() => setFilterWorkplace(undefined)}>back</Button>
-        </Box>
-      )}
-      <TimelineGrid ticks={ticks} />
-      <Box sx={{ position: "relative" }} mb={2} mt={6} height="30px">
-        {Object.keys(groupedByWorkplace).map((name, i) => {
-          const { minDate, maxDate } = getMinMaxFromData(
-            groupedByWorkplace[name]
-          );
-          const { left, width } = getSize({
-            startDate: minDate,
-            endDate: maxDate,
-          });
-          return (
-            <Box
-              sx={{
-                top: 0,
-                position: "absolute",
-                left: `${left}%`,
-                width: `${width}%`,
-                borderTop: "1px solid #eee",
-                transition: ".3s all",
-                borderRadius: "5px",
-                bottom: 0,
-              }}
+    <Box
+      position="relative"
+      pt={20}
+      sx={{
+        "& section:nth-child(even)": {
+          transform: [null, "rotateY(180deg)"],
+          "& .skills,.jobDescription,.marker": {
+            transform: [null, "rotateY(180deg)"],
+          },
+        },
+      }}
+    >
+      {orderBy(data, "date", "desc").map(({ name, date, skills }, i) => {
+        return (
+          <Box as="section" maxW="container.lg" pt="5" margin="0 auto">
+            <HStack
+              flexDir={["column", "row-reverse"]}
+              spacing="0"
+              alignItems="flex-start"
+              className="jobSection"
             >
-              <Box
-                sx={{
-                  fontSize: 10,
-                }}
-                onClick={() => setFilterWorkplace(name)}
-              >
-                {name}
+              <Box flexGrow={1} flexBasis={0} overflow="hidden" flex={1}>
+                {name && (
+                  <SkillTimeline
+                    skills={(skills || []).map((skill) => ({
+                      description: skill?.description || "",
+                      endDate: skill?.endDate || "",
+                      name: skill?.name || "",
+                      startDate: skill?.startDate || "",
+                    }))}
+                  />
+                )}
               </Box>
+              <Box
+                flexGrow={1}
+                flexBasis={0}
+                textAlign="center"
+                className="jobDescription"
+              >
+                <Box p="5">
+                  <Heading size="xl" mb="3">
+                    {name}
+                  </Heading>
+                  <Text fontSize="small" fontWeight="light">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Etiam varius metus nisi, vitae tristique urna porta vitae.
+                    Morbi in blandit ipsum, at dictum dolor. Pellentesque
+                    faucibus tristique elit. Sed rhoncus iaculis diam sed
+                    malesuada. Sed vitae pellentesque ante. Aliquam egestas
+                    porta purus et rutrum. Vestibulum dictum purus tortor.{" "}
+                  </Text>
+                </Box>
+              </Box>
+            </HStack>
+            <Box textAlign="center" className="marker">
+              <Marker>{date && new Date(date).getFullYear()}</Marker>
             </Box>
-          );
-        })}
-      </Box>
-      <Box
-        display="grid"
-        gridAutoRows="1fr"
-        gridAutoFlow="row"
-        height="100%"
-        gap={2}
-      >
-        {Object.keys(groupedTimeline).map((name, i) => (
-          <Box sx={{ position: "relative" }}>
-            {groupedTimeline[name].map(
-              ({ startDate, endDate, id, description }) => {
-                const { left, width } = getSize({ startDate, endDate });
-                return (
-                  <Tooltip label={description}>
-                    <Box
-                      key={id}
-                      sx={{
-                        position: "absolute",
-                        top: 0,
-                        bottom: 0,
-                        left: `${left}%`,
-                        width: `${width}%`,
-                        background: "pink",
-                        // outline: "1px solid white",
-                        overflow: "hidden",
-                        whiteSpace: "nowrap",
-                        transition: ".3s all",
-                        opacity: 0.8,
-                        display: "flex",
-                        fontSize: 12,
-                        _dark: { background: "purple.400" },
-                      }}
-                    >
-                      {name}
-                    </Box>
-                  </Tooltip>
-                );
-              }
-            )}
           </Box>
-        ))}
-      </Box>
+        );
+      })}
     </Box>
   );
 }

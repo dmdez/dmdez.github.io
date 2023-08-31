@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Box, Text, Tooltip } from "@chakra-ui/react";
+import { Box, Divider, Text } from "@chakra-ui/react";
 import { max, min, orderBy } from "lodash";
 import { scaleTime, timeDay, timeMonth, timeYear } from "d3";
-import { InfoOutlineIcon } from "@chakra-ui/icons";
+import { useTimelineConnectors } from "../hooks/useTimelineConnectors";
 
 function getMinMaxFromData(d: Queries.Timeline2YamlSkills[]) {
   const startDates = d.map(({ startDate }) =>
@@ -20,7 +20,7 @@ type Props = {
   skills: Queries.Timeline2YamlSkills[];
 };
 
-const colorMap = {
+const colorMap: { [key: string]: string } = {
   HTML: "#68D391",
   CSS: "#4FD1C5",
   "Macromedia Flash": "#F56565",
@@ -40,6 +40,10 @@ export function SkillTimeline({ skills }: Props) {
   const { minDate, maxDate } = getMinMaxFromData(skills);
   const range = [minDate, maxDate];
   const x = scaleTime().domain(range).nice(timeDay);
+  const sortedSkills = orderBy(skills, "startDate", "desc");
+  const { rootRef, dotRefs, cardRefs } = useTimelineConnectors({
+    skills,
+  });
 
   function getSize({
     startDate,
@@ -54,69 +58,84 @@ export function SkillTimeline({ skills }: Props) {
     return { left, width };
   }
 
+  function getColor(str: string | null) {
+    return str ? colorMap[str] || "#ffffff" : "#ffffff";
+  }
+
   return (
-    <Box>
-      <Box
-        position="relative"
-        display="flex"
-        flexDir="row"
-        height="50vh"
-        alignItems="flex-end"
-      >
-        {orderBy(skills, "startDate", "desc").map((skill) => {
-          const { left, width } = getSize({
+    <Box
+      display="flex"
+      ref={rootRef}
+      mb="5em"
+      position="relative"
+      flexDir="row"
+      sx={{
+        ".jtk-connector": {
+          opacity: 0.5,
+        },
+      }}
+    >
+      <Box position="relative">
+        {sortedSkills.map((skill, i) => {
+          const { left } = getSize({
             startDate: skill.startDate,
             endDate: skill.endDate,
           });
-          const color = skill.name
-            ? colorMap[skill.name] || "#ffffff"
-            : "#ffffff";
           return (
-            <Tooltip label={skill.description}>
-              <Box
-                as="button"
-                position="relative"
-                flexGrow={1}
-                flexBasis={0}
-                height={`${width}%`}
-                //   marginBottom={`${left}%`}
-                borderLeft={`1px solid ${color}`}
-                background={`linear-gradient(90deg, ${color}33 10%, #ff990000 60%)`}
-                bottom={`${left}%`}
-                overflow="hidden"
-                textAlign="left"
-              >
-                <Box p={1}>
-                  <Text fontSize={12}>{skill.name}</Text>
-                  <InfoOutlineIcon />
-                </Box>
-              </Box>
-            </Tooltip>
+            <Box
+              ref={(el) => {
+                if (dotRefs.current && el) {
+                  dotRefs.current[i] = el;
+                }
+              }}
+              sx={{
+                position: "absolute",
+                left: 0,
+                bottom: `${left}%`,
+                width: "8px",
+                height: "8px",
+                background: "currentColor",
+                // borderRadius: "50%",
+                transform: "translateX(-50%) rotate(45deg)",
+              }}
+            />
           );
         })}
       </Box>
-    </Box>
-  );
-
-  return (
-    <Box>
-      <Box position="relative">
-        {orderBy(skills, "startDate", "desc").map((skill) => {
-          const { left, width } = getSize({
-            startDate: skill.startDate,
-            endDate: skill.endDate,
-          });
+      <Box flex="1"></Box>
+      <Box position="relative" flex="3" className="skills" mr={[4]}>
+        {sortedSkills.map((skill, i) => {
+          const color = getColor(skill.name);
           return (
-            <Box position="relative" mb={1}>
-              <Box
-                sx={{
-                  marginLeft: `${left}%`,
-                  width: `${width}%`,
-                  borderTop: "12px solid blue",
-                  fontSize: 12,
-                }}
-              >
-                {skill.name}
+            <Box
+              position="relative"
+              borderLeft={`3px solid ${color}`}
+              // background={`linear-gradient(90deg, ${color}33 10%, #ff990000 60%)`}
+              background={`${color}33`}
+              overflow="hidden"
+              textAlign="left"
+              mb={1}
+              borderRadius={5}
+              transition="background .3s"
+              sx={{
+                "&:hover": {
+                  background: `${color}66`,
+                },
+              }}
+              ref={(el) => {
+                if (cardRefs.current && el) {
+                  cardRefs.current[i] = el;
+                }
+              }}
+            >
+              <Box p={2}>
+                <Text fontSize="sm" fontWeight="bold" mb="2">
+                  {skill.name}
+                </Text>
+                <Divider />
+                <Text fontSize="xs" mt="2">
+                  {skill.description}
+                </Text>
               </Box>
             </Box>
           );

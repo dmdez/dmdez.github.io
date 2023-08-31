@@ -19,8 +19,8 @@ const Heading = defineStyleConfig({
 export default extendTheme({
     initialColorMode: 'dark',
   colors: {
-    primary: theme.colors.facebook,
-    // secondary: theme.colors.blue
+    primary: theme.colors.cyan,
+    secondary: theme.colors.green
   },
   components: {
     Heading
