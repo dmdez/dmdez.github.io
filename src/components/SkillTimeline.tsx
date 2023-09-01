@@ -1,14 +1,12 @@
-import * as React from "react";
-import { Box } from "@chakra-ui/react";
-import { max, min, orderBy } from "lodash";
-import { scaleTime, timeDay } from "d3";
-import { useTimelineConnectors } from "../hooks/useTimelineConnectors";
-import { SkillCard } from "./SkillCard";
+import * as React from 'react';
+import { Box } from '@chakra-ui/react';
+import { max, min, orderBy } from 'lodash';
+import { scaleTime, timeDay } from 'd3';
+import { useTimelineConnectors } from '../hooks/useTimelineConnectors';
+import { SkillCard } from './SkillCard';
 
 function getMinMaxFromData(d: Queries.TimelineYamlSkills[]) {
-  const startDates = d.map(({ startDate }) =>
-    startDate ? new Date(startDate).valueOf() : 0
-  );
+  const startDates = d.map(({ startDate }) => (startDate ? new Date(startDate).valueOf() : 0));
   const endDates = d.map(({ endDate }) =>
     endDate ? new Date(endDate).valueOf() : Date.now().valueOf()
   );
@@ -26,7 +24,7 @@ export function SkillTimeline({ skills }: Props) {
   const { minDate, maxDate } = getMinMaxFromData(skills);
   const range = [minDate, maxDate];
   const x = scaleTime().domain(range).nice(timeDay);
-  const sortedSkills = orderBy(skills, "startDate", "desc");
+  const sortedSkills = orderBy(skills, 'startDate', 'desc');
   const { rootRef, dotRefs, cardRefs } = useTimelineConnectors({
     skills,
   });
@@ -35,13 +33,13 @@ export function SkillTimeline({ skills }: Props) {
     <Box
       display="flex"
       ref={rootRef}
-      mb="5em"
+      mb={[0, '5em']}
       position="relative"
       flexDir="row"
       sx={{
-        ".connect": {
+        '.connect': {
           opacity: 0.4,
-          transition: "all .3s",
+          transition: 'all .3s',
         },
         [`.connect-${activeIndex}`]: {
           opacity: 1,
@@ -60,25 +58,21 @@ export function SkillTimeline({ skills }: Props) {
             onMouseOver={() => setActiveIndex(i)}
             onMouseOut={() => setActiveIndex(undefined)}
             sx={{
-              position: "absolute",
+              position: 'absolute',
               left: 0,
-              bottom: `${
-                (skill.startDate ? x(new Date(skill.startDate)) : 0) * 100
-              }%`,
-              width: "8px",
-              height: "8px",
-              background: "currentColor",
-              transition: "all .3s",
+              bottom: `${(skill.startDate ? x(new Date(skill.startDate)) : 0) * 100}%`,
+              width: '8px',
+              height: '8px',
+              background: 'currentColor',
+              transition: 'all .3s',
               opacity: activeIndex === i ? 1 : 0.6,
-              transform: `translateX(-50%) rotate(45deg) ${
-                activeIndex === i ? "scale(1.4)" : ""
-              }`,
+              transform: `translateX(-50%) rotate(45deg) ${activeIndex === i ? 'scale(1.4)' : ''}`,
             }}
           />
         ))}
       </Box>
       <Box flex="1"></Box>
-      <Box position="relative" flex={["5", "3"]} className="skills" mr={[4]}>
+      <Box position="relative" flex={['5', '3']} className="skills">
         {sortedSkills.map((skill, i) => (
           <Box
             key={i}

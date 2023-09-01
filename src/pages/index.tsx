@@ -1,5 +1,5 @@
-import * as React from "react";
-import type { HeadFC } from "gatsby";
+import * as React from 'react';
+import type { HeadFC } from 'gatsby';
 import {
   Box,
   Container,
@@ -10,42 +10,40 @@ import {
   Tab,
   TabPanels,
   TabPanel,
-} from "@chakra-ui/react";
-import { Timeline } from "../components/Timeline";
-import { ToggleColor } from "../components/ToggleColor";
-import { MarkerYear } from "../components/MarkerYear";
+} from '@chakra-ui/react';
+import { Timeline } from '../components/Timeline';
+import { ToggleColor } from '../components/ToggleColor';
+import { MarkerYear } from '../components/MarkerYear';
 
 const IndexPage: React.FC = () => {
   return (
     <Box as="main">
       <Box
         sx={{
-          bgGradient: "linear(gray.200, transparent)",
+          bgGradient: 'linear(gray.200, transparent)',
           _dark: {
-            bgGradient: "linear(gray.900, transparent)",
+            bgGradient: 'linear(gray.900, transparent)',
           },
         }}
       >
         <Container maxW="container.lg" position="relative">
-          <Box
-            py={[10, 20]}
-            bgGradient="radial(#ffffff11 0%, #ffffff00 60%)"
-            textAlign="center"
-          >
+          <Box position="absolute" top="0" right="0">
+            <ToggleColor />
+          </Box>
+          <Box py={[10, 20]} bgGradient="radial(#ffffff11 0%, #ffffff00 60%)" textAlign="center">
             <Text fontSize="x-large" fontWeight="thin" mb="2">
               👋 hello, my name is
             </Text>
             <Heading
-              size={["3xl", "4xl"]}
+              size={['3xl', '4xl']}
               sx={{
-                textShadow: "10px 10px 4px rgba(0,0,0,.25)",
-                _dark: { textShadow: "10px 10px 4px black" },
+                textShadow: '10px 10px 4px rgba(0,0,0,.25)',
+                _dark: { textShadow: '10px 10px 4px black' },
               }}
             >
               deric mendez
             </Heading>
           </Box>
-          <ToggleColor />
         </Container>
       </Box>
       <Tabs align="center">
@@ -53,29 +51,30 @@ const IndexPage: React.FC = () => {
           <Tab>Career</Tab>
           <Tab>Hobbies</Tab>
         </TabList>
-        <TabPanels>
+        <TabPanels position="relative" zIndex="1">
           <TabPanel>
             <Box
-              position={"relative"}
+              position={'relative'}
               sx={{
-                display: ["flex", "block"],
-                flexDir: "row-reverse",
+                display: ['flex', 'block'],
+                flexDir: 'row-reverse',
                 ml: [4, 0],
+                mt: 8,
               }}
             >
               <Timeline />
               <Box
                 sx={{
-                  position: ["relative", "static"],
+                  position: ['relative', 'static'],
                 }}
               >
                 <MarkerYear />
                 <Box
                   sx={{
-                    borderLeft: "1px dashed",
-                    height: "calc(100% - 4em)",
-                    position: "absolute",
-                    left: "50%",
+                    borderLeft: '1px dashed',
+                    height: 'calc(100% - 5em)',
+                    position: 'absolute',
+                    left: '50%',
                     opacity: 0.5,
                     bottom: 0,
                   }}

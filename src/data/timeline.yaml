@@ -51,7 +51,7 @@
   - name: CSS
     startDate: 2004-01-01
     endDate: 2008-08-01
-    description: ========
+    description: 
   - name: Perl
     startDate: 2006-01-01
     endDate: 2008-05-01
@@ -67,7 +67,7 @@
   - name: CSS
     startDate: 2008-08-01
     endDate: 2014-08-09
-    description: ====
+    description: 
   - name: jQuery
     startDate: 2010-08-01
     endDate: 2013-08-09
@@ -83,6 +83,16 @@
 
 - name: Crema
   date: 2014-09-01
+  description: |
+    Saught out Crema because I loved their values around building 
+    good products for users and customers.  This included 
+    working collaboratively in an agile environment allowing all roles to
+    contribute
+    
+    Spent half my tenure here 
+    helping start-ups build out their product ideas and the 
+    other half helping enterprise organizations build out their 
+    internal tools.
   skills:
   - name: Wordpress
     startDate: 2016-01-01
@@ -95,8 +105,8 @@
   - name: React
     startDate: 2018-01-01
     endDate: 2023-09-01
-    description: ====
+    description: 
   - name: Typescript
     startDate: 2019-01-01
     endDate: 2023-09-01
-    description: ====
+    description: 

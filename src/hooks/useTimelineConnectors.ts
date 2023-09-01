@@ -1,5 +1,6 @@
 import * as React from "react";
 import { BezierConnector, BrowserJsPlumbInstance, newInstance } from "@jsplumb/browser-ui";
+import { debounce } from "lodash";
 
 type Props = {
   skills: Queries.TimelineYamlSkills[];
@@ -41,6 +42,7 @@ export function useTimelineConnectors({ skills }: Props) {
     });
   }, [skills]);
 
+  // set up jsPlumb
   React.useEffect(() => {
     if (rootRef.current) {
       jsPlumbInstance.current = newInstance({
@@ -48,17 +50,25 @@ export function useTimelineConnectors({ skills }: Props) {
       });
       drawConnections();
     }
-
-    window.onresize = () => {
-      if ( jsPlumbInstance.current ) {
-        jsPlumbInstance.current.deleteEveryConnection()
-        drawConnections();
-      }
-    }
     return () => {
       if ( jsPlumbInstance.current ) {
         jsPlumbInstance.current.deleteEveryConnection()
       }
+    }
+  }, []);
+
+  // redraw connectors on resize
+  React.useEffect(() => {
+    const debouncedHandleResize = debounce(function handleResize() {
+      if ( jsPlumbInstance.current && rootRef.current ) {
+        jsPlumbInstance.current.repaint(rootRef.current)
+      }
+    }, 300)
+
+    window.addEventListener("resize", debouncedHandleResize);
+
+    return () => {
+      window.removeEventListener('resize', debouncedHandleResize);
     }
   }, []);
 
