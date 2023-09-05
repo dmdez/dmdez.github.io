@@ -43,9 +43,12 @@ const Tabs= defineStyleConfig({
   },
 })
 
-// ffffcc
-export default extendTheme({
-  initialColorMode: 'dark',
+const myTheme = extendTheme({
+  config: {
+    initialColorMode: 'dark',
+  },
+  useSystemColorMode: false,
+  useColorSchemeMediaQuery: true,
   colors: {
     primary: theme.colors.cyan,
     // secondary: theme.colors.linkedin,
@@ -76,3 +79,5 @@ export default extendTheme({
 }, withDefaultColorScheme({
   colorScheme: 'primary'
 }))
+
+export default myTheme;

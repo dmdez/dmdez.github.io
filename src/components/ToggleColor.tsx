@@ -12,6 +12,7 @@ export function ToggleColor() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        transform: 'translateX(-100%)',
       }}
     >
       <Box
@@ -22,7 +23,7 @@ export function ToggleColor() {
       />
       <Box
         as="button"
-        onClick={toggleColorMode}
+        onClick={() => toggleColorMode()}
         sx={{
           fontSize: ['2em', '3em'],
           transform: 'rotate(180deg)',

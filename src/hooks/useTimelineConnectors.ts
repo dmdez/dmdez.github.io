@@ -35,9 +35,6 @@ export function useTimelineConnectors({ skills }: Props) {
             },
           },
         });
-        connection.bind("mouseover", (d) => {
-          console.log("hover?")
-        })
       }
     });
   }, [skills]);
