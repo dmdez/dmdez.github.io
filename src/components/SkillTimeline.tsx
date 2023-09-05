@@ -8,7 +8,7 @@ import { SkillCard } from './SkillCard';
 function getMinMaxFromData(d: Queries.TimelineYamlSkills[]) {
   const startDates = d.map(({ startDate }) => (startDate ? new Date(startDate).valueOf() : 0));
   const endDates = d.map(({ endDate }) =>
-    endDate ? new Date(endDate).valueOf() : Date.now().valueOf()
+    endDate ? new Date(endDate).valueOf() : Date.now().valueOf(),
   );
   const minDate = min(startDates) || 0;
   const maxDate = max(endDates) || 0;
@@ -43,6 +43,9 @@ export function SkillTimeline({ skills }: Props) {
         },
         [`.connect-${activeIndex}`]: {
           opacity: 1,
+          '& path': {
+            strokeWidth: '2px',
+          },
         },
       }}
     >
@@ -84,7 +87,7 @@ export function SkillTimeline({ skills }: Props) {
               }
             }}
           >
-            <SkillCard name={skill.name} description={skill.description} />
+            <SkillCard name={skill.name} description={skill.description} date={skill.startDate} />
           </Box>
         ))}
       </Box>

@@ -17,7 +17,7 @@ export function useTimelineConnectors({ skills }: Props) {
       const source = cardRefs.current[i];
       const target = dotRefs.current[i];
       if (source && target && jsPlumbInstance.current) {
-        const connection = jsPlumbInstance.current.connect({
+        jsPlumbInstance.current.connect({
           source,
           target,
           anchors: ["Left", "Right"],

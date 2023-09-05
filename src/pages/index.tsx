@@ -27,7 +27,7 @@ const IndexPage: React.FC = () => {
         }}
       >
         <Container maxW="container.lg" position="relative">
-          <Box position="absolute" top="0" right="0">
+          <Box position="absolute" top="0" right="1em">
             <ToggleColor />
           </Box>
           <Box py={[10, 20]} bgGradient="radial(#ffffff11 0%, #ffffff00 60%)" textAlign="center">

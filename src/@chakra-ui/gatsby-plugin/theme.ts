@@ -46,23 +46,22 @@ const Tabs= defineStyleConfig({
 const myTheme = extendTheme({
   config: {
     initialColorMode: 'dark',
+    useSystemColorMode: false,
   },
-  useSystemColorMode: false,
-  useColorSchemeMediaQuery: true,
   colors: {
     primary: theme.colors.cyan,
     // secondary: theme.colors.linkedin,
     secondary: {
       "50": "#fff8fb",
-    "100": "#feedf5",
-    "200": "#fde0ee",
-    "300": "#fcc4df",
-    "400": "#f988be",
-    "500": "#d8488d",
-    "600": "#91305e",
-    "700": "#5f203d",
-    "800": "#381325",
-    "900": "#2d0f1d"
+      "100": "#feedf5",
+      "200": "#fde0ee",
+      "300": "#fcc4df",
+      "400": "#f988be",
+      "500": "#d8488d",
+      "600": "#91305e",
+      "700": "#5f203d",
+      "800": "#381325",
+      "900": "#2d0f1d"
     }
   },
   components: {

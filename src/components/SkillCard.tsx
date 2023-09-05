@@ -4,6 +4,7 @@ import * as React from 'react';
 type Props = {
   name?: string | null;
   description?: string | null;
+  date?: string | null;
 };
 
 const colorMap: { [key: string]: string } = {
@@ -22,7 +23,7 @@ const colorMap: { [key: string]: string } = {
   Typescript: 'purple',
 };
 
-export function SkillCard({ name, description }: Props) {
+export function SkillCard({ name, description, date }: Props) {
   const color = name ? colorMap[name] || 'gray' : 'gray';
   return (
     <Box
@@ -52,6 +53,9 @@ export function SkillCard({ name, description }: Props) {
         <Heading as="h3" fontSize="sm" fontWeight="bold">
           {name}
         </Heading>
+        <Text fontSize="xx-small" mt="2">
+          {date}
+        </Text>
         <Text fontSize="xs" mt="2">
           {description}
         </Text>
