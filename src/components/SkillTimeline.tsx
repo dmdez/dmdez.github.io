@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Box } from '@chakra-ui/react';
 import { max, min, orderBy } from 'lodash';
-import { scaleTime, timeDay } from 'd3';
+import { scaleTime, timeDay, timeYear } from 'd3';
 import { useTimelineConnectors } from '../hooks/useTimelineConnectors';
 import { SkillCard } from './SkillCard';
 
@@ -33,7 +33,7 @@ export function SkillTimeline({ skills }: Props) {
     <Box
       display="flex"
       ref={rootRef}
-      mb={[0, '5em']}
+      mb={[0]}
       position="relative"
       flexDir="row"
       sx={{
@@ -75,7 +75,7 @@ export function SkillTimeline({ skills }: Props) {
         ))}
       </Box>
       <Box flex="1"></Box>
-      <Box position="relative" flex={['5', '3']} className="skills">
+      <Box position="relative" flex={['6', '3']} className="skills">
         {sortedSkills.map((skill, i) => (
           <Box
             key={i}

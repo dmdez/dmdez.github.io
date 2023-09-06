@@ -1,4 +1,4 @@
-import { Box, Divider, Heading, Text } from '@chakra-ui/react';
+import { Box, Divider, HStack, Heading, Text } from '@chakra-ui/react';
 import * as React from 'react';
 
 type Props = {
@@ -50,12 +50,12 @@ export function SkillCard({ name, description, date }: Props) {
       }}
     >
       <Box p={2}>
-        <Heading as="h3" fontSize="sm" fontWeight="bold">
-          {name}
-        </Heading>
-        <Text fontSize="xx-small" mt="2">
-          {date}
-        </Text>
+        <HStack align="center" justifyContent="space-between">
+          <Heading as="h3" fontSize="sm" fontWeight="bold">
+            {name}
+          </Heading>
+          <Text fontSize="xx-small">{date && new Date(date).toLocaleDateString()}</Text>
+        </HStack>
         <Text fontSize="xs" mt="2">
           {description}
         </Text>
