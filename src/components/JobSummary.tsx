@@ -3,12 +3,8 @@ import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-  PopoverHeader,
   PopoverBody,
-  PopoverFooter,
   PopoverArrow,
-  PopoverCloseButton,
-  PopoverAnchor,
 } from '@chakra-ui/popover';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { HStack, Heading, Text } from '@chakra-ui/layout';
@@ -57,10 +53,11 @@ export function JobSummary({ description, name }: Props) {
               </Button>
             </PopoverTrigger>
             <PopoverContent>
+              <PopoverArrow />
               {/* <PopoverArrow />
               <PopoverCloseButton />
               <PopoverHeader>About</PopoverHeader> */}
-              <PopoverBody>{renderDescription()}</PopoverBody>
+              <PopoverBody textAlign="left">{renderDescription()}</PopoverBody>
             </PopoverContent>
           </Popover>
         </HStack>

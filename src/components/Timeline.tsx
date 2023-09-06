@@ -40,7 +40,17 @@ export function Timeline() {
     >
       {orderBy(data, 'date', 'desc').map(({ name, date, skills, description }, i) => {
         return (
-          <TimelineJob name={name} date={date} skills={skills || []} description={description} />
+          <TimelineJob
+            name={name}
+            date={date}
+            skills={(skills || []).map((skill) => ({
+              description: skill?.description || '',
+              endDate: skill?.endDate || '',
+              name: skill?.name || '',
+              startDate: skill?.startDate || '',
+            }))}
+            description={description}
+          />
         );
       })}
     </Box>

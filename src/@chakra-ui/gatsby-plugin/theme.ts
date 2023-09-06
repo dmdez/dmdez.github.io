@@ -14,34 +14,6 @@ const Heading = defineStyleConfig({
   defaultProps: {},
 })
 
-const Tabs= defineStyleConfig({
-  variants: {
-    enclosed: {
-      tab: {
-        borderBottom: 0,
-        _selected: {
-          bg: "gray.50", _dark: { bg: "gray.900"},
-        }
-      },
-      tabpanel: {
-        borderBottom: "1px solid",
-        borderColor: "inherit",
-        _light: {
-          bg: 'gray.50'
-        },
-        _dark: {
-          bg: "gray.900"
-        }
-      },
-      tablist: {
-        mb: "0",
-      },
-    }
-  },
-  defaultProps: {
-    variant: "enclosed",
-  },
-})
 
 const myTheme = extendTheme({
   config: {
@@ -66,7 +38,6 @@ const myTheme = extendTheme({
   },
   components: {
     Heading,
-    Tabs,
   },
   // https://github.com/chakra-ui/chakra-ui/blob/main/packages/components/theme/src/semantic-tokens.ts#L4
   semanticTokens: {

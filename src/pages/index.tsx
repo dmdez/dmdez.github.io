@@ -1,16 +1,6 @@
 import * as React from 'react';
 import type { HeadFC } from 'gatsby';
-import {
-  Box,
-  Container,
-  Heading,
-  Text,
-  Tabs,
-  TabList,
-  Tab,
-  TabPanels,
-  TabPanel,
-} from '@chakra-ui/react';
+import { Box, Container, Heading, Text } from '@chakra-ui/react';
 import { Timeline } from '../components/Timeline';
 import { ToggleColor } from '../components/ToggleColor';
 import { MarkerYear } from '../components/MarkerYear';
@@ -31,62 +21,84 @@ const IndexPage: React.FC = () => {
             <ToggleColor />
           </Box>
           <Box py={[10, 20]} bgGradient="radial(#ffffff11 0%, #ffffff00 60%)" textAlign="center">
-            <Text fontSize="x-large" fontWeight="thin" mb="2">
-              👋 hello, my name is
+            <Text
+              fontSize="x-large"
+              fontWeight="thin"
+              mb="2"
+              sx={{
+                _before: {
+                  content: `"👋"`,
+                  position: 'absolute',
+                  transform: 'translateX(-100%)',
+                  display: 'inline-block',
+                  marginLeft: '-.5em',
+                },
+              }}
+            >
+              hello, my name is
             </Text>
             <Heading
               size={['3xl', '4xl']}
               sx={{
-                textShadow: '10px 10px 4px rgba(0,0,0,.25)',
+                textShadow: '10px 10px 4px rgba(0,0,0,.15)',
                 _dark: { textShadow: '10px 10px 4px black' },
               }}
             >
               deric mendez
             </Heading>
+            <Container>
+              <Text fontSize={['small', 'large']} fontWeight="thin" mt={['5', '10']}>
+                I enjoy planning and building user experiences for web applications of all kinds.
+                Below, you can get a glimpse of my career and skillsets over since 2000.
+              </Text>
+            </Container>
           </Box>
         </Container>
       </Box>
-      <Tabs align="center">
-        <TabList>
-          <Tab>Career</Tab>
-          <Tab>Hobbies</Tab>
-        </TabList>
-        <TabPanels position="relative" zIndex="1">
-          <TabPanel>
+
+      <Box
+        sx={{
+          borderBottom: '1px solid',
+          borderTop: '1px solid',
+          borderColor: 'inherit',
+          _light: {
+            bg: 'gray.50',
+          },
+          _dark: {
+            bg: 'gray.900',
+          },
+        }}
+      >
+        <Box
+          position={'relative'}
+          sx={{
+            display: ['flex', 'block'],
+            flexDir: 'row-reverse',
+            ml: [4, 0],
+            mt: 8,
+            px: 4,
+          }}
+        >
+          <Timeline />
+          <Box
+            sx={{
+              position: ['relative', 'static'],
+            }}
+          >
+            <MarkerYear />
             <Box
-              position={'relative'}
               sx={{
-                display: ['flex', 'block'],
-                flexDir: 'row-reverse',
-                ml: [4, 0],
-                mt: 8,
+                borderLeft: '1px dashed',
+                height: 'calc(100% - 5em)',
+                position: 'absolute',
+                left: '50%',
+                opacity: 0.5,
+                bottom: 0,
               }}
-            >
-              <Timeline />
-              <Box
-                sx={{
-                  position: ['relative', 'static'],
-                }}
-              >
-                <MarkerYear />
-                <Box
-                  sx={{
-                    borderLeft: '1px dashed',
-                    height: 'calc(100% - 5em)',
-                    position: 'absolute',
-                    left: '50%',
-                    opacity: 0.5,
-                    bottom: 0,
-                  }}
-                />
-              </Box>
-            </Box>
-          </TabPanel>
-          <TabPanel>
-            <p>two!</p>
-          </TabPanel>
-        </TabPanels>
-      </Tabs>
+            />
+          </Box>
+        </Box>
+      </Box>
     </Box>
   );
 };

@@ -75,7 +75,7 @@ export function SkillTimeline({ skills }: Props) {
         ))}
       </Box>
       <Box flex="1"></Box>
-      <Box position="relative" flex={['6', '3']} className="skills">
+      <Box position="relative" flex={['6', '3']} my="5" className="skills">
         {sortedSkills.map((skill, i) => (
           <Box
             key={i}
