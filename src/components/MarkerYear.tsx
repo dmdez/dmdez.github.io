@@ -10,7 +10,7 @@ export function MarkerYear() {
         top: 0,
         left: '50%',
         height: '100%',
-        transform: 'translateX(-50%)',
+        // transform: 'translateX(-50%)',
         textAlign: 'center',
         zIndex: 10,
       }}

@@ -67,6 +67,7 @@ const IndexPage: React.FC = () => {
           _dark: {
             bg: 'gray.900',
           },
+          position: 'relative',
         }}
       >
         <Box
@@ -74,7 +75,6 @@ const IndexPage: React.FC = () => {
           sx={{
             display: ['flex', 'block'],
             flexDir: 'row-reverse',
-            ml: [4, 0],
             mt: 8,
             px: 4,
           }}
@@ -86,7 +86,7 @@ const IndexPage: React.FC = () => {
             }}
           >
             <MarkerYear />
-            <Box
+            {/* <Box
               sx={{
                 borderLeft: '1px dashed',
                 height: 'calc(100% - 5em)',
@@ -95,7 +95,7 @@ const IndexPage: React.FC = () => {
                 opacity: 0.5,
                 bottom: 0,
               }}
-            />
+            /> */}
           </Box>
         </Box>
       </Box>

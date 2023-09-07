@@ -36,6 +36,7 @@ export function SkillTimeline({ skills }: Props) {
       mb={[0]}
       position="relative"
       flexDir="row"
+      height="100%"
       sx={{
         '.connect': {
           opacity: 0.4,

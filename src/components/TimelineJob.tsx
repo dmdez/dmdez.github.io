@@ -26,15 +26,25 @@ export function TimelineJob({ name, date, skills, description }: Props) {
           height: '1px',
         }}
       />
-      <Box as="section" maxW="container.lg" margin="0 auto">
-        <HStack
-          flexDir={['column-reverse', 'row-reverse']}
-          spacing="0"
-          alignItems="center"
+      <Box as="section" maxW="container.lg" margin="0 auto" mb={['4', 0]}>
+        <Box
+          display="flex"
+          flexDir={['column', 'row-reverse']}
+          alignItems="stretch"
           className="jobSection"
-          marginBottom="6em"
+          // marginBottom="6em"
         >
-          <Box flexGrow={1} flexBasis={0} overflow="hidden" flex={1}>
+          <Box
+            ml={['4', 0]}
+            flexGrow={1}
+            flexBasis={0}
+            overflow="hidden"
+            flex={1}
+            sx={{
+              borderLeft: '1px dashed',
+              borderColor: 'inherit',
+            }}
+          >
             {name && (
               <SkillTimeline
                 skills={(skills || []).map((skill) => ({
@@ -50,17 +60,16 @@ export function TimelineJob({ name, date, skills, description }: Props) {
             flexGrow={1}
             flexBasis={0}
             textAlign="center"
-            className="jobDescription"
-            mb={[0, '5em']}
+            width="100%"
+            display="flex"
+            flexDir="column"
           >
-            <Box p="5">
-              <JobSummary name={name} description={description} />
-            </Box>
+            <JobSummary name={name} description={description} date={date} />
           </Box>
-        </HStack>
-        <Box textAlign="center" className="marker">
-          <Marker>{date && new Date(date).getFullYear()}</Marker>
         </Box>
+        {/* <Box textAlign="center" className="marker">
+          <Marker>{date && new Date(date).getFullYear()}</Marker>
+        </Box> */}
       </Box>
     </>
   );

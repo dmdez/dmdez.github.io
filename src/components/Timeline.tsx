@@ -32,7 +32,7 @@ export function Timeline() {
       sx={{
         '& section:nth-of-type(even)': {
           transform: [null, 'rotateY(180deg)'],
-          '& .skills,.jobDescription,.marker': {
+          '& .skills,.jobText': {
             transform: [null, 'rotateY(180deg)'],
           },
         },
