@@ -20,7 +20,7 @@ const IndexPage: React.FC = () => {
           <Box position="absolute" top="0" right="1em">
             <ToggleColor />
           </Box>
-          <Box py={[10, 20]} bgGradient="radial(#ffffff11 0%, #ffffff00 60%)" textAlign="center">
+          <Box py={10} bgGradient="radial(#ffffff11 0%, #ffffff00 60%)" textAlign="center">
             <Text
               fontSize="x-large"
               fontWeight="thin"
@@ -56,6 +56,8 @@ const IndexPage: React.FC = () => {
         </Container>
       </Box>
 
+      <MarkerYear />
+
       <Box
         sx={{
           borderBottom: '1px solid',
@@ -70,33 +72,8 @@ const IndexPage: React.FC = () => {
           position: 'relative',
         }}
       >
-        <Box
-          position={'relative'}
-          sx={{
-            display: ['flex', 'block'],
-            flexDir: 'row-reverse',
-            mt: 8,
-            px: 4,
-          }}
-        >
+        <Box position={'relative'} px="4">
           <Timeline />
-          <Box
-            sx={{
-              position: ['relative', 'static'],
-            }}
-          >
-            <MarkerYear />
-            {/* <Box
-              sx={{
-                borderLeft: '1px dashed',
-                height: 'calc(100% - 5em)',
-                position: 'absolute',
-                left: '50%',
-                opacity: 0.5,
-                bottom: 0,
-              }}
-            /> */}
-          </Box>
         </Box>
       </Box>
     </Box>

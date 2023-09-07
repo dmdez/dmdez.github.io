@@ -28,7 +28,6 @@ export function Timeline() {
   return (
     <Box
       position="relative"
-      pt={[0, 20]}
       sx={{
         '& section:nth-of-type(even)': {
           transform: [null, 'rotateY(180deg)'],
