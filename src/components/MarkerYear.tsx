@@ -7,11 +7,12 @@ export function MarkerYear() {
     <>
       <Box
         sx={{
-          pt: 4,
           position: 'sticky',
           top: '1em',
           zIndex: 10,
           textAlign: 'center',
+          width: '2.4em',
+          margin: '0 auto',
         }}
       >
         <Box

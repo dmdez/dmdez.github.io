@@ -21,12 +21,14 @@ type Props = {
 
 export function SkillTimeline({ skills }: Props) {
   const [activeIndex, setActiveIndex] = React.useState<number | undefined>();
+  const [expandedIndex, setExpandedIndex] = React.useState<number | undefined>();
   const { minDate, maxDate } = getMinMaxFromData(skills);
   const range = [minDate, maxDate];
   const x = scaleTime().domain(range).nice(timeDay);
   const sortedSkills = orderBy(skills, 'startDate', 'desc');
   const { rootRef, dotRefs, cardRefs } = useTimelineConnectors({
     skills,
+    rerenderCount: expandedIndex,
   });
 
   return (
@@ -88,7 +90,13 @@ export function SkillTimeline({ skills }: Props) {
               }
             }}
           >
-            <SkillCard name={skill.name} description={skill.description} date={skill.startDate} />
+            <SkillCard
+              name={skill.name}
+              description={skill.description}
+              date={skill.startDate}
+              onClick={() => setExpandedIndex(i === expandedIndex ? undefined : i)}
+              expanded={expandedIndex === i}
+            />
           </Box>
         ))}
       </Box>

@@ -4,9 +4,10 @@ import { debounce } from "lodash";
 
 type Props = {
   skills: Queries.TimelineYamlSkills[];
+  rerenderCount?: number
 };
 
-export function useTimelineConnectors({ skills }: Props) {
+export function useTimelineConnectors({ skills, rerenderCount }: Props) {
   const rootRef = React.useRef<HTMLDivElement | null>(null);
   const dotRefs = React.useRef<(HTMLDivElement | null)[]>([]);
   const cardRefs = React.useRef<(Element | null)[]>([]);
@@ -54,8 +55,15 @@ export function useTimelineConnectors({ skills }: Props) {
     }
   }, []);
 
+  React.useEffect(() => {
+    if ( jsPlumbInstance.current && rootRef.current ) {
+      jsPlumbInstance.current.repaint(rootRef.current)
+    }
+  }, [rerenderCount]);
+
   // redraw connectors on resize
   React.useEffect(() => {
+    console.log("rerender?")
     const debouncedHandleResize = debounce(function handleResize() {
       if ( jsPlumbInstance.current && rootRef.current ) {
         jsPlumbInstance.current.repaint(rootRef.current)

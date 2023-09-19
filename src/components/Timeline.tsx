@@ -23,7 +23,7 @@ export function Timeline() {
       }
     }
   `);
-  const data = timeline.allTimelineYaml.nodes;
+  const data = orderBy(timeline.allTimelineYaml.nodes, 'date', 'desc');
 
   return (
     <Box
@@ -37,21 +37,21 @@ export function Timeline() {
         },
       }}
     >
-      {orderBy(data, 'date', 'desc').map(({ name, date, skills, description }, i) => {
-        return (
-          <TimelineJob
-            name={name}
-            date={date}
-            skills={(skills || []).map((skill) => ({
-              description: skill?.description || '',
-              endDate: skill?.endDate || '',
-              name: skill?.name || '',
-              startDate: skill?.startDate || '',
-            }))}
-            description={description}
-          />
-        );
-      })}
+      {data.map(({ name, date, skills, description }, i) => (
+        <TimelineJob
+          key={i}
+          name={name}
+          date={date}
+          skills={(skills || []).map((skill) => ({
+            description: skill?.description || '',
+            endDate: skill?.endDate || '',
+            name: skill?.name || '',
+            startDate: skill?.startDate || '',
+            link: skill?.startDate || '',
+          }))}
+          description={description}
+        />
+      ))}
     </Box>
   );
 }

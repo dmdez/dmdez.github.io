@@ -101,11 +101,15 @@
   - name: Angular
     startDate: 2017-01-01
     endDate: 2018-01-01
-    description: Prior to adopting React, we were using Angular to build out SPA's.
+    description: Prior to adopting React, Angular was our primary tool to build out single page apps leveraging their unique templating system (at the time).
   - name: React
     startDate: 2018-01-01
     endDate: 2023-09-01
-    description: 
+    description: Entroduced to React through co-workers research and willingness to experiement with it's universal capabilities across web and native platforms.  Since then, have latched onto React due to it's community support and accessible learning curve.
+  - name: D3
+    startDate: 2019-01-01
+    description: Getting familiar using D3 with React was a great way to componentize visualizations using composable JSX components without D3's DOM utilities, leveraging the core dataviz functions.
+    link: https://github.com/dmdez/d3-react-demo
   - name: Typescript
     startDate: 2019-01-01
     endDate: 2023-09-01

@@ -1,10 +1,13 @@
 import * as React from 'react';
 import type { HeadFC } from 'gatsby';
-import { Box, Container, Heading, Text } from '@chakra-ui/react';
+import { Box, Container, HStack, Heading, Icon, IconButton, Text } from '@chakra-ui/react';
 import { Timeline } from '../components/Timeline';
 import { ToggleColor } from '../components/ToggleColor';
 import { MarkerYear } from '../components/MarkerYear';
-
+import { TfiGithub } from 'react-icons/tfi';
+import { FaHeart } from 'react-icons/fa';
+import { MdOutlineEmail } from 'react-icons/md';
+import { GradientDivider } from '../components/GradientDivider';
 const IndexPage: React.FC = () => {
   return (
     <Box as="main">
@@ -16,11 +19,16 @@ const IndexPage: React.FC = () => {
           },
         }}
       >
-        <Container maxW="container.lg" position="relative">
+        <Container maxW="container.lg" position="relative" pt="8">
           <Box position="absolute" top="0" right="1em">
             <ToggleColor />
           </Box>
-          <Box py={10} bgGradient="radial(#ffffff11 0%, #ffffff00 60%)" textAlign="center">
+          <Box
+            pt={10}
+            pb={[0, 5]}
+            bgGradient="radial(#ffffff11 0%, #ffffff00 60%)"
+            textAlign="center"
+          >
             <Text
               fontSize="x-large"
               fontWeight="thin"
@@ -47,10 +55,41 @@ const IndexPage: React.FC = () => {
               deric mendez
             </Heading>
             <Container>
-              <Text fontSize={['small', 'large']} fontWeight="thin" mt={['5', '10']}>
-                I enjoy planning and building user experiences for web applications of all kinds.
-                Below, you can get a glimpse of my career and skillsets over since 2000.
+              <Text fontSize={['md', 'large']} fontWeight="thin" mt={['5', '10']} mb="2">
+                I enjoy planning and building user experiences for web applications of all kinds
+                with collaborative project teams. Below, you can get a glimpse of my career and
+                skillsets since 2000.
               </Text>
+              <Box p="5">
+                <Box as="span">
+                  <Icon as={FaHeart} fontSize="12" color="secondary.500" />
+                </Box>
+                <Box ml="2" fontWeight="extrabold" as="span">
+                  I Love
+                </Box>
+                <Box ml="2" as="span" fontWeight="thin">
+                  Family, cooking and disc golf.
+                </Box>
+              </Box>
+              <GradientDivider />
+              <HStack my="8" spacing="5" justifyContent="center">
+                <IconButton
+                  isRound
+                  variant="outline"
+                  aria-label="GitHub"
+                  icon={<Icon as={TfiGithub} />}
+                  as="a"
+                  href="https://github.com/dmdez"
+                />
+                <IconButton
+                  isRound
+                  variant="outline"
+                  aria-label="Email"
+                  icon={<Icon as={MdOutlineEmail} />}
+                  as="a"
+                  href="mailto:dmmendez@gmail.com"
+                />
+              </HStack>
             </Container>
           </Box>
         </Container>
@@ -82,4 +121,4 @@ const IndexPage: React.FC = () => {
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>DM - deric mendez</title>;
+export const Head: HeadFC = () => <title>deric mendez</title>;
