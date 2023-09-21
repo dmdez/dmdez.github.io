@@ -19,6 +19,7 @@ const IndexPage: React.FC = () => {
             bgGradient: 'linear(gray.900, transparent)',
           },
         }}
+        mb="6"
       >
         <Container maxW="container.lg" position="relative" pt="8">
           <Box position="absolute" top="0" right="1em">
@@ -41,7 +42,7 @@ const IndexPage: React.FC = () => {
             >
               deric mendez
             </Heading>
-            <Container>
+            <Box maxW="container.sm" margin="0 auto">
               <Text fontSize={['md', 'large']} fontWeight="thin" mt={['5', '10']} mb="2">
                 I enjoy planning and building user experiences for web applications of all kinds
                 with collaborative project teams. Below, you can get a glimpse of my career and
@@ -59,7 +60,7 @@ const IndexPage: React.FC = () => {
                 </Box>
               </Box>
               <GradientDivider />
-            </Container>
+            </Box>
           </Box>
         </Container>
       </Box>
