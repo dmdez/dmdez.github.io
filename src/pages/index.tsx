@@ -33,6 +33,7 @@ const IndexPage: React.FC = () => {
             <Hello />
             <Heading
               size={['3xl', '4xl']}
+              my="4"
               sx={{
                 textShadow: '10px 10px 4px rgba(0,0,0,.15)',
                 _dark: { textShadow: '10px 10px 4px black' },
@@ -58,24 +59,6 @@ const IndexPage: React.FC = () => {
                 </Box>
               </Box>
               <GradientDivider />
-              <HStack my="8" spacing="5" justifyContent="center">
-                <IconButton
-                  isRound
-                  variant="outline"
-                  aria-label="GitHub"
-                  icon={<Icon as={TfiGithub} />}
-                  as="a"
-                  href="https://github.com/dmdez"
-                />
-                <IconButton
-                  isRound
-                  variant="outline"
-                  aria-label="Email"
-                  icon={<Icon as={MdOutlineEmail} />}
-                  as="a"
-                  href="mailto:dmmendez@gmail.com"
-                />
-              </HStack>
             </Container>
           </Box>
         </Container>
@@ -101,6 +84,25 @@ const IndexPage: React.FC = () => {
           <Timeline />
         </Box>
       </Box>
+
+      <HStack py="16" spacing="5" justifyContent="center">
+        <IconButton
+          isRound
+          variant="outline"
+          aria-label="GitHub"
+          icon={<Icon as={TfiGithub} />}
+          as="a"
+          href="https://github.com/dmdez"
+        />
+        <IconButton
+          isRound
+          variant="outline"
+          aria-label="Email"
+          icon={<Icon as={MdOutlineEmail} />}
+          as="a"
+          href="mailto:dmmendez@gmail.com"
+        />
+      </HStack>
     </Box>
   );
 };
