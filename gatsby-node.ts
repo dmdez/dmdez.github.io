@@ -4,6 +4,7 @@ type Profile = {
     login: string;
     id: string;
     avatar_url: string;
+    name: string;
 }
 
 export const sourceNodes: GatsbyNode["sourceNodes"] = async ({
