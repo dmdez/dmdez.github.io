@@ -8,9 +8,10 @@ import { TfiGithub } from 'react-icons/tfi';
 import { FaHeart } from 'react-icons/fa';
 import { MdOutlineEmail } from 'react-icons/md';
 import { GradientDivider } from '../components/GradientDivider';
+import { Avatar } from '../components/Avatar';
 const IndexPage: React.FC = () => {
   return (
-    <Box as="main">
+    <Box as="main" mb="20">
       <Box
         sx={{
           bgGradient: 'linear(gray.200, transparent)',
@@ -29,22 +30,25 @@ const IndexPage: React.FC = () => {
             bgGradient="radial(#ffffff11 0%, #ffffff00 60%)"
             textAlign="center"
           >
-            <Text
-              fontSize="x-large"
-              fontWeight="thin"
-              mb="2"
-              sx={{
-                _before: {
-                  content: `"👋"`,
-                  position: 'absolute',
-                  transform: 'translateX(-100%)',
-                  display: 'inline-block',
-                  marginLeft: '-.5em',
-                },
-              }}
-            >
-              hello, my name is
-            </Text>
+            <HStack justifyContent="center" spacing="4">
+              <Text
+                fontSize="x-large"
+                fontWeight="thin"
+                mb="2"
+                sx={{
+                  _before: {
+                    content: `"👋"`,
+                    position: 'absolute',
+                    transform: 'translateX(-100%)',
+                    display: 'inline-block',
+                    marginLeft: '-.5em',
+                  },
+                }}
+              >
+                hello, my name is
+              </Text>
+              <Avatar />
+            </HStack>
             <Heading
               size={['3xl', '4xl']}
               sx={{

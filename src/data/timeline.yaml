@@ -63,11 +63,16 @@
 
 - name: DEG
   date: 2008-08-01
+  description: |
+    My first job dedicated to building content sites with CSS/HTML within a custom .NET framework.
+    
+    DEG eventually started working with clients to help build projects in Wordpress, Magento and 
+    Sitecore/Sharepoint environments which expoded me to several other languages such as PHP/.NET/Node.
   skills:
   - name: CSS
     startDate: 2008-08-01
     endDate: 2014-08-09
-    description: 
+    description: Spent a lot of time working with stylesheets and systemizing CSS on content sites through SASS, semantic HTML through atomic design principals. 
   - name: jQuery
     startDate: 2010-08-01
     endDate: 2013-08-09
@@ -75,7 +80,7 @@
   - name: Macromedia Flash
     startDate: 2008-08-01
     endDate: 2010-08-09
-    description: 
+    description: JavaScript interactions were not as accessible as they are today, so setting up Flash components to add map interactions and game-like interfaces were imperative to add valueable interactions on client projects.
   - name: .NET
     startDate: 2008-08-01
     endDate: 2014-08-09
@@ -113,4 +118,4 @@
   - name: Typescript
     startDate: 2019-01-01
     endDate: 2023-09-01
-    description: 
+    description: Introduced to TS through a React/Redux project.  Definitely a humbling experience adding type assurance to an existing Javascript codebase, but the pay-off was worth it!
