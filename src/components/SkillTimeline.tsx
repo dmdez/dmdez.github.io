@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { Box } from '@chakra-ui/react';
 import { max, min, orderBy } from 'lodash';
-import { scaleTime, timeDay, timeYear } from 'd3';
+import { scaleTime, timeDay } from 'd3';
 import { useTimelineConnectors } from '../hooks/useTimelineConnectors';
 import { SkillCard } from './SkillCard';
 
 function getMinMaxFromData(d: Queries.TimelineYamlSkills[]) {
-  const startDates = d.map(({ startDate }) => (startDate ? new Date(startDate).valueOf() : 0));
+  const startDates = d.map(({ startDate }) =>
+    startDate ? new Date(startDate).valueOf() : undefined,
+  );
   const endDates = d.map(({ endDate }) =>
     endDate ? new Date(endDate).valueOf() : Date.now().valueOf(),
   );
@@ -60,7 +62,7 @@ export function SkillTimeline({ skills }: Props) {
                 dotRefs.current[i] = el;
               }
             }}
-            key={i}
+            key={skill.name}
             onMouseOver={() => setActiveIndex(i)}
             onMouseOut={() => setActiveIndex(undefined)}
             sx={{
@@ -81,7 +83,7 @@ export function SkillTimeline({ skills }: Props) {
       <Box position="relative" flex={['6', '3']} my="5" className="skills">
         {sortedSkills.map((skill, i) => (
           <Box
-            key={i}
+            key={skill.name}
             onMouseOver={() => setActiveIndex(i)}
             onMouseOut={() => setActiveIndex(undefined)}
             ref={(el) => {

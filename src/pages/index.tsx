@@ -1,6 +1,16 @@
 import * as React from 'react';
-import type { HeadFC } from 'gatsby';
-import { Box, Container, HStack, Heading, Icon, IconButton, Text } from '@chakra-ui/react';
+import { type HeadFC } from 'gatsby';
+import {
+  Box,
+  Container,
+  HStack,
+  Heading,
+  Link,
+  Icon,
+  IconButton,
+  Text,
+  Center,
+} from '@chakra-ui/react';
 import { Timeline } from '../components/Timeline';
 import { ToggleColor } from '../components/ToggleColor';
 import { MarkerYear } from '../components/MarkerYear';
@@ -9,6 +19,7 @@ import { FaHeart } from 'react-icons/fa';
 import { MdOutlineEmail } from 'react-icons/md';
 import { GradientDivider } from '../components/GradientDivider';
 import { Hello } from '../components/Hello';
+import { ExternalLinkIcon } from '@chakra-ui/icons';
 const IndexPage: React.FC = () => {
   return (
     <Box as="main" mb="20">
@@ -64,9 +75,7 @@ const IndexPage: React.FC = () => {
           </Box>
         </Container>
       </Box>
-
       <MarkerYear />
-
       <Box
         sx={{
           borderBottom: '1px solid',
@@ -85,8 +94,7 @@ const IndexPage: React.FC = () => {
           <Timeline />
         </Box>
       </Box>
-
-      <HStack py="16" spacing="5" justifyContent="center">
+      <HStack pt="16" pb="8" spacing="5" justifyContent="center">
         <IconButton
           isRound
           variant="outline"
@@ -104,6 +112,16 @@ const IndexPage: React.FC = () => {
           href="mailto:dmmendez@gmail.com"
         />
       </HStack>
+      <Center pb="16" mx="4" textAlign="center">
+        <Text>
+          Built with 🔨
+          <br />
+          <Link color="secondary.500" href="https://github.com/dmdez/dmdez.github.io" isExternal>
+            Gatsby, Chakra and D3 (timeline)
+            <ExternalLinkIcon mx="6px" mb="3px" />
+          </Link>
+        </Text>
+      </Center>
     </Box>
   );
 };

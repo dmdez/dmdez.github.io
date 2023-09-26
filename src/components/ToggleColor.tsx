@@ -13,6 +13,11 @@ export function ToggleColor() {
         flexDirection: 'column',
         alignItems: 'center',
         transform: 'translateX(-100%)',
+        opacity: 0.4,
+        transition: '.3s opacity',
+        _hover: {
+          opacity: 1,
+        },
       }}
     >
       <Box
