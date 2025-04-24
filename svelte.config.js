@@ -16,6 +16,7 @@ const config = {
 		adapter: adapter({
 			pages: 'build',
 			assets: 'build',
+			appDir: 'app',
 			fallback: undefined,
 			precompress: false,
 			strict: true

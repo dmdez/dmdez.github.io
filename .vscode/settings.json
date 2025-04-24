@@ -1,5 +1,9 @@
 {
   "[svelte]": {
     "editor.defaultFormatter": "svelte.svelte-vscode"
-  }
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "editor.formatOnSave": true
 }

@@ -12,7 +12,7 @@
         });
         }}
     >
-        <svg viewBox="0 0 24 24" focusable="false" class="chakra-icon css-d0gtmn"><path fill="currentColor" d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path></svg>
+        <svg viewBox="0 0 24 24" width="24" focusable="false" class="chakra-icon css-d0gtmn"><path fill="currentColor" d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path></svg>
     </a>
 </div>
 <div class="year">
@@ -42,6 +42,11 @@
         box-shadow: 0 0 10px #00000055;
         color: white;
         text-decoration: none;
+    }
+
+    a svg {
+        width: 2em;
+        height: 2.4em;
     }
     .year {
         text-align: center;
