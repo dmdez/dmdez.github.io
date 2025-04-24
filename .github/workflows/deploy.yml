@@ -23,26 +23,10 @@ jobs:
       - name: build
         env:
           BASE_PATH: "/${{ github.event.repository.name }}"
-        run: |
-          npm run build
+        run: npm run build
 
-      - name: Upload Artifacts
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to GitHub Pages
+        uses: jamesives/github-pages-deploy-action@v4
         with:
-          path: "build/"
-  deploy:
-    needs: build_site
-    runs-on: ubuntu-latest
-
-    permissions:
-      pages: write
-      id-token: write
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
-      - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v4
+          branch: gh-pages
+          folder: build
