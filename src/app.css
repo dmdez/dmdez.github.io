@@ -8,6 +8,10 @@
     --text-shadow-lg: 10px 10px 4px rgba(0, 0, 0, .15);
     --screen-sm: 40rem;
 
+    --color-skill-0-100: oklch(96.8% 0.007 247.896);
+    --color-skill-0-400: oklch(70.4% 0.04 256.788);
+    --color-skill-0-800: oklch(27.9% 0.041 260.031);
+
     --color-skill-1-100: oklch(93.6% 0.032 17.717);
     --color-skill-1-400: oklch(70.4% 0.191 22.216);
     --color-skill-1-800: oklch(44.4% 0.177 26.899);
@@ -46,9 +50,6 @@
 
         --color-skill-2: var(--color-skill-2-400);
         --color-skill-2-border: var(--color-skill-2-800);
-    }
-    .skills li {
-        color: var(--color-base-100);
     }
 }
 
@@ -98,43 +99,4 @@ hr {
     .leader-line {
         display: none;
     }
-}
-
-.skills li.skill-sveltekit,
-.skills li.skill-macromedia-flash {
-    background-color: var(--color-skill-1-100);
-    border-color: var(--color-skill-1-400);
-}
-
-.skills li.skill-d3,
-.skills li.skill-css,
-.skills li.skill-javascript {
-    background-color: var(--color-skill-2-100);
-    border-color: var(--color-skill-2-400);
-}
-
-.skills li.skill-typescript,
-.skills li.skill-mysql {
-    background-color: var(--color-skill-3-100);
-    border-color: var(--color-skill-3-400);
-}
-
-.skills li.skill-react,
-.skills li.skill-photoshop {
-    background-color: var(--color-skill-4-100);
-    border-color: var(--color-skill-4-400);
-}
-
-.skills li.skill-angular,
-.skills li.skill-jquery,
-.skills li.skill-perl {
-    background-color: var(--color-skill-5-100);
-    border-color: var(--color-skill-5-400);
-}
-
-.skills li.skill-wordpress,
-.skills li.skill-html,
-.skills li.skill--net {
-    background-color: var(--color-skill-6-100);
-    border-color: var(--color-skill-6-400);
 }

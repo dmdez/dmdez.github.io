@@ -19,26 +19,26 @@
 	}
 
 	function getSkillId(skillName: string) {
-		return skillName.toLowerCase().replace(/[^A-Z0-9]/ig, '-');
+		return skillName.toLowerCase().replace(/[^A-Z0-9]/gi, '-');
 	}
 
 	function handleToggle(index: number) {
 		if (selectedIndex === index) {
 			selectedIndex = undefined;
-		} else { 
+		} else {
 			selectedIndex = index;
 		}
 	}
-	
 </script>
 
 <ul>
 	{#each skills as skill, index}
-	<li
+		<li
 			id={`${jobId}-skill-description-${index}`}
 			{...skill}
-			class={`skill-${getSkillId(skill.name)} ${ index === selectedIndex ? 'selected' : ''}`}
-			onclick={() =>handleToggle(index)}>
+			class={`skill-${getSkillId(skill.name)} ${index === selectedIndex ? 'selected' : ''}`}
+			onclick={() => handleToggle(index)}
+		>
 			<header>
 				<h4>{skill.name}</h4>
 				<div>
@@ -67,10 +67,10 @@
 	}
 
 	li {
-		background-color: var(--color-base-100);
+		background-color: var(--color-skill-0-100);
+		border-color: var(--color-skill-0-400);
 		border-left-width: 3px;
 		border-left-style: solid;
-		border-left-color: var(--color-base-300);
 		border-radius: 0.3rem;
 		padding: 0.5rem;
 		margin: 0 0 0.3rem;
@@ -90,5 +90,50 @@
 		line-clamp: 2;
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
+	}
+
+	li.skill-sveltekit,
+	li.skill-macromedia-flash {
+		background-color: var(--color-skill-1-100);
+		border-color: var(--color-skill-1-400);
+	}
+
+	li.skill-d3,
+	li.skill-css,
+	li.skill-javascript {
+		background-color: var(--color-skill-2-100);
+		border-color: var(--color-skill-2-400);
+	}
+
+	li.skill-typescript,
+	li.skill-mysql {
+		background-color: var(--color-skill-3-100);
+		border-color: var(--color-skill-3-400);
+	}
+
+	li.skill-react,
+	li.skill-photoshop {
+		background-color: var(--color-skill-4-100);
+		border-color: var(--color-skill-4-400);
+	}
+
+	li.skill-angular,
+	li.skill-jquery,
+	li.skill-perl {
+		background-color: var(--color-skill-5-100);
+		border-color: var(--color-skill-5-400);
+	}
+
+	li.skill-wordpress,
+	li.skill-html,
+	li.skill--net {
+		background-color: var(--color-skill-6-100);
+		border-color: var(--color-skill-6-400);
+	}
+
+	@media (prefers-color-scheme: dark) {
+		li {
+			color: var(--color-base-100);
+		}
 	}
 </style>
