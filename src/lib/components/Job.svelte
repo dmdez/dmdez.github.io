@@ -25,45 +25,71 @@
 		}));
 
 	function getMinMaxFromData(d: SkillsData[]) {
-		const startDates = d.map(({ startDate }) =>
-			startDate ? new Date(startDate).valueOf() : undefined
-		);
+		const startDates = d.map(({ startDate }) => (startDate ? new Date(startDate).valueOf() : 0));
 		const endDates = d.map(({ endDate }) =>
 			endDate ? new Date(endDate).valueOf() : Date.now().valueOf()
 		);
-		const minDate = parseInt(min(startDates) || 0);
-		const maxDate = parseInt(max(endDates) || 0);
+		const minDate = min(startDates) || 0;
+		const maxDate = max(endDates) || 0;
 		return { minDate, maxDate };
 	}
 </script>
 
-<article class:rotate={rotate} id={`job-${id}`}>
-	<div class="description" id="box1">
-		<div class="description-content">
-			<h2>{title}</h2>
-			{@html marked(content)}
+<div class="container">
+	<article class:rotate id={`job-${id}`}>
+		<div class="description" id="box1">
+			<div class="description-content">
+				<h2>{title}</h2>
+				{@html marked(content)}
+			</div>
 		</div>
-	</div>
-	<div class="divider">
-		<div class="divider-line"></div>
-		{#each sortedSkills as skill, index}
-			<div
-				id={`${id}-skill-${index}`}
-				class="skill-date-marker"
-				style="bottom: {skill.bottomPosition}%"
-			></div>
-		{/each}
-	</div>
-	<div class="skills" id="box2">
-		<div class="lines"></div>
-		<Skills jobId={id} skills={sortedSkills} />
-	</div>
-</article>
-<center>
-	<Badge>{date?.getFullYear()}</Badge>
-</center>
+		<div class="divider">
+			<div class="divider-line"></div>
+			{#each sortedSkills as skill, index}
+				<div
+					id={`${id}-skill-${index}`}
+					class="skill-date-marker"
+					style="bottom: {skill.bottomPosition}%"
+				></div>
+			{/each}
+		</div>
+		<div class="skills" id="box2">
+			<div class="lines"></div>
+			<Skills jobId={id} skills={sortedSkills} />
+		</div>
+	</article>
+	<center class="year">
+		<span class="arrow up"></span>
+		<Badge>{date?.getFullYear()}</Badge>
+		<span class="arrow down"></span>
+	</center>
+</div>
 
 <style>
+	.year {
+		position: sticky;
+		bottom: 1rem;
+		padding: 5px 0 0;
+	}
+
+	.arrow {
+		border-style: solid;
+		border-color: var(--color-primary) transparent;
+		display: block;
+		width: 0;
+		height: 0;
+		opacity: 0.5;
+	}
+
+	.arrow.up {
+		border-width: 0 3px 3px;
+	}
+	.arrow.down {
+		border-width: 3px 3px 0;
+	}
+	.container {
+		position: relative;
+	}
 	.skills {
 		position: relative;
 		display: flex;
@@ -73,7 +99,7 @@
 	}
 	.skill-date-marker {
 		position: absolute;
-		left:0;
+		left: 0;
 		width: 0;
 		height: 0;
 		border-width: 5px 0 5px 5px;
@@ -82,7 +108,7 @@
 	}
 	article.rotate .skill-date-marker {
 		border-width: 5px 5px 5px 0;
-		right:0;
+		right: 0;
 		left: auto;
 	}
 	.divider {
@@ -92,7 +118,8 @@
 		article {
 			display: flex;
 		}
-		.description, .skills {
+		.description,
+		.skills {
 			flex: 1;
 			width: 50%;
 		}
@@ -106,24 +133,31 @@
 		}
 
 		.divider {
-			display:block;
+			display: block;
 			width: 0;
-			
 		}
 		.divider-line {
 			border-left: 1px dashed var(--color-base-content);
 			position: absolute;
 			top: 0;
 			bottom: 0;
-			opacity:.3;
+			opacity: 0.3;
 		}
 		.lines {
 			flex: 1;
 		}
 	}
 
+	@keyframes fade {
+		from {
+			opacity: 0;
+		}
+	}
 	.description {
 		text-align: center;
+		animation: fade linear both;
+		animation-timeline: view();
+		animation-range: 25vh 75vh;
 	}
 
 	.description-content {
@@ -134,5 +168,4 @@
 	h2 {
 		font-weight: 100;
 	}
-
 </style>

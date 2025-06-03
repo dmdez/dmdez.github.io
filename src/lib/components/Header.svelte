@@ -25,7 +25,7 @@
 	}
 	h1 {
 		margin: 0 0 2rem;
-		font-size: 1.4rem;
+		font-size: 1.6rem;
 		text-transform: lowercase;
 		font-weight: 100;
 	}
@@ -60,10 +60,12 @@
 	h1 strong {
 		margin: 1rem 0 0;
 		display: block;
-		font-size: 2rem;
+		font-size: 3rem;
 		line-height: 2rem;
 		font-weight: 100;
 		text-shadow: var(--text-shadow-lg);
+		position: sticky;
+		top: 50px;
 	}
 
 	@media (min-width: 40em) {
@@ -75,7 +77,7 @@
 
 	header {
 		background: linear-gradient(to bottom, var(--color-base-300), var(--color-base-100));
-		padding: 4rem 2rem;
+		padding: 2rem 1rem;
 		text-align: center;
 		font-weight: 100;
 	}
