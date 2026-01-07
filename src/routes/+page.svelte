@@ -8,6 +8,12 @@
 	import type LeaderLine from 'leader-line-new';
 	let { data }: { data: PageData } = $props();
 
+	const title = 'deric mendez';
+	const description =
+		'Portfolio of Deric Mendez, a web developer specializing in building user experiences for web applications. Explore my career journey and skillsets including React, TypeScript, SvelteKit, and more.';
+	const siteUrl = 'https://dmdez.com';
+	const ogImage = data.profile.avatar_url;
+
 	onMount(async () => {
 		const LeaderLine = await import('leader-line-new');
 		const lines: LeaderLine[] = [];
@@ -27,7 +33,7 @@
 						color: 'currentColor',
 						startSocketGravity: [-35, 0],
 						endSocketGravity: [35, 0],
-						path: 'fluid',
+						path: 'fluid'
 					});
 
 					lines.push(line);
@@ -38,13 +44,45 @@
 					line.position();
 				});
 			});
-			if ( jobContainer ) {
+			if (jobContainer) {
 				observer.observe(jobContainer);
 			}
-
 		});
 	});
 </script>
+
+<svelte:head>
+	<!-- Primary Meta Tags -->
+	<title>{title}</title>
+	<meta name="title" content={title} />
+	<meta name="description" content={description} />
+	<meta name="author" content="Deric Mendez" />
+	<meta name="robots" content="index, follow" />
+	<link rel="canonical" href={siteUrl} />
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={siteUrl} />
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:site_name" content="Deric Mendez Portfolio" />
+	<meta property="og:locale" content="en_US" />
+
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:url" content={siteUrl} />
+	<meta name="twitter:title" content={title} />
+	<meta name="twitter:description" content={description} />
+	<meta name="twitter:image" content={ogImage} />
+	<meta name="twitter:creator" content="@dmdez" />
+
+	<!-- Additional SEO -->
+	<meta
+		name="keywords"
+		content="web developer, frontend engineer, UX engineer, React, TypeScript, SvelteKit, JavaScript, portfolio, Deric Mendez"
+	/>
+</svelte:head>
 
 <Header avatarUrl={data.profile.avatar_url} />
 <hr />
